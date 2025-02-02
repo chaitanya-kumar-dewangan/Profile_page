@@ -27,7 +27,9 @@ class Profile extends StatelessWidget {
   }
 
   Stack floatingcard() {
+
     return Stack(
+      alignment: Alignment.topCenter,
       children: [
         Positioned(
           left: 20,
@@ -35,10 +37,12 @@ class Profile extends StatelessWidget {
           bottom: 20,
           top: 100,
           child: Card(
+
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.0)),
             color: Colors.white,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Expanded(child: SizedBox()),
                 Text(
@@ -54,8 +58,10 @@ class Profile extends StatelessWidget {
                 ),
                 mediaButtonSection(),
                 socialMedia(),
+                const FollowersSection(),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 32.0,
                         vertical: 12.0,
@@ -63,7 +69,7 @@ class Profile extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24.0))),
                   onPressed: () {},
-                  child: const Text('FOLLOW NOW'),
+                  child: const Text('FOLLOW NOW', style: TextStyle(color: Colors.white),),
                 ),
                 const SizedBox(
                   height: 10,
@@ -197,6 +203,76 @@ class SocialMediaButon extends StatelessWidget {
       child: Icon(
         icon,
         color: filled ? Colors.white : Colors.black,
+      ),
+    );
+  }
+}
+
+class FollowersSection extends StatelessWidget {
+  const FollowersSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      margin: const EdgeInsets.symmetric(
+        vertical: 20.0,
+      ),
+      // width: 120,
+      color: Colors.blue.shade50,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 60,
+            width: 250,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.red,
+                    radius: 25,
+                    child: Icon(Icons.person),
+                  ),
+                ),
+                Positioned(left: 40,
+                    child: CircleAvatar(
+                      radius: 25,
+                      child: Icon(Icons.group),
+                    )),
+
+                Positioned(left: 80,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.purple,
+                      radius: 25,
+                      child: Icon(Icons.group_add),
+                    )),
+                Positioned(left: 120,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.green,
+                      radius: 25,
+                      child: Icon(Icons.group_remove),
+                    )),
+                Positioned(left: 160,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      radius: 25,
+                      child: Icon(Icons.people_alt_rounded),
+                    )),
+                Positioned(left: 200,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.blueAccent,
+                      radius: 25,
+                      child: Icon(Icons.accessible_forward_sharp),
+                    )),
+
+
+              ],
+            ),
+          ),
+          Text('22 Follower you know',  style: TextStyle(color: Colors.grey),)
+        ],
       ),
     );
   }
